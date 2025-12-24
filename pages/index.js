@@ -1,10 +1,17 @@
+
 import React, { useState } from 'react';
-// Importação simplificada para evitar erros de ícones
-import * as Icons from 'lucide-react'; 
+import { 
+  User, 
+  Briefcase, 
+  Code, 
+  Award, 
+  Mail, 
+  FileText, 
+  ChevronRight 
+} from 'lucide-react';
 
 export default function PortfolioHub() {
   const [currentPage, setCurrentPage] = useState('home');
-  const { User, Briefcase, Code, Award, Mail, FileText, ChevronRight } = Icons;
 
   const sections = [
     { id: 'sobre', name: 'Sobre Mim', icon: User, description: 'Conheça minha trajetória' },
