@@ -24,7 +24,7 @@ export default function PortfolioHub() {
           <div className="relative inline-block mb-8">
             <div className="w-48 h-48 mx-auto rounded-full overflow-hidden border-4 border-white shadow-2xl">
               <img 
-                src="/api/placeholder/400/400" 
+                src="/public/new.jpg" 
                 alt="Foto Profissional" 
                 className="w-full h-full object-cover filter brightness-105 contrast-105"
               />
