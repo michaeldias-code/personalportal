@@ -1,5 +1,13 @@
 import React, { useState } from 'react';
-import { User, Briefcase, Code, Award, Mail, FileText, ChevronRight } from 'lucide-react';
+import { 
+  User, 
+  Briefcase, 
+  Code, 
+  Award, 
+  Mail, 
+  FileText, 
+  ChevronRight 
+} from 'lucide-react';
 
 export default function PortfolioHub() {
   const [currentPage, setCurrentPage] = useState('home');
@@ -13,7 +21,7 @@ export default function PortfolioHub() {
     { id: 'contato', name: 'Contato', icon: Mail, description: 'Entre em contato' },
   ];
 
-  const renderHome = () => (
+    const renderHome = () => (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-blue-50">
       <header className="pt-20 pb-12">
         <div className="max-w-5xl mx-auto px-6 text-center">
