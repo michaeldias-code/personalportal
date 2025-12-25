@@ -158,27 +158,27 @@ export default function App() {
       {/* Hero Section */}
       <header id="home" className="pt-20">
         <div className="max-w-7xl mx-auto px-6 py-12">
-          <div className="grid md:grid-cols-2 gap-16 items-center">
+          <div className="grid md:grid-cols-2 gap-12 items-center">
             {/* Conteúdo à esquerda */}
-            <div className="space-y-6">
+            <div className="space-y-6 order-2 md:order-1">
               <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-100 rounded-full">
                 <Sparkles className="w-4 h-4 text-blue-600" />
                 <span className="text-blue-700 text-sm font-medium">{t.available}</span>
               </div>
               
-              <h1 className="text-6xl font-bold text-gray-900 leading-tight">
+              <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-gray-900 leading-tight">
                 {t.hello}<br />
                 <span className="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
                   Michael Dias
                 </span>
               </h1>
               
-              <p className="text-xl text-gray-600 leading-relaxed">
+              <p className="text-lg sm:text-xl text-gray-600 leading-relaxed">
                 {t.description}
               </p>
 
               {/* Links sociais */}
-              <div className="flex gap-4 pt-4">
+              <div className="flex flex-wrap gap-3 pt-4">
                 <a 
                   href="https://github.com/michaeldias-code/personalportal" 
                   target="_blank"
@@ -208,13 +208,17 @@ export default function App() {
             </div>
 
             {/* Foto à direita */}
-            <div className="flex justify-center md:justify-end">
+            <div className="flex justify-center md:justify-end order-1 md:order-2">
               <div className="relative group">
                 <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-3xl blur opacity-25 group-hover:opacity-40 transition duration-300"></div>
-                <div className="relative w-80 h-96 rounded-3xl overflow-hidden border-4 border-white shadow-2xl">
+                <div className="relative w-64 h-80 sm:w-72 sm:h-[22rem] md:w-80 md:h-96 rounded-3xl overflow-hidden border-4 border-white shadow-2xl">
                   <img 
                     src="/foto.jpg" 
                     alt="Michael Dias" 
+                    onError={(e) => {
+                      e.target.onerror = null;
+                      e.target.src = "https://via.placeholder.com/400x500?text=Michael+Dias";
+                    }}
                     className="w-full h-full object-cover filter grayscale group-hover:grayscale-0 transition-all duration-500"
                   />
                 </div>
@@ -357,7 +361,7 @@ export default function App() {
         <div className="max-w-7xl mx-auto px-6 py-10">
           <div className="flex flex-col md:flex-row justify-between items-center gap-6">
             <p className="text-gray-600">
-              © 2025 <span className="font-semibold text-gray-900">Michael Dias</span>. {t.footer}
+              © 2024 <span className="font-semibold text-gray-900">Michael Dias</span>. {t.footer}
             </p>
             <div className="flex gap-6">
               <a href="https://github.com/michaeldias-code/personalportal" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-blue-600 transition-colors font-medium">
