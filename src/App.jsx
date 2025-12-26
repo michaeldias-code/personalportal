@@ -92,7 +92,7 @@ export default function App() {
     
     // Recursos Musicais
     { id: 7, title: language === 'pt' ? 'Editor de Partituras' : 'Score Editor', category: 'musica', tags: ['Web Audio', 'MIDI'], link: '#', status: 'active', icon: 'music' },
-    { id: 8, title: language === 'pt' ? 'Piano Virtual' : 'Virtual Piano', category: 'musica', tags: ['Web Audio', 'React'], link: '#', status: 'active', icon: 'music' },
+    { id: 8, title: language === 'pt' ? 'Piano Virtual' : 'Virtual Piano', category: 'musica', tags: ['Web Audio', 'React'], link: 'https://michaelspiano.vercel.app', status: 'active', icon: 'music' },
     { id: 9, title: language === 'pt' ? 'Metrônomo' : 'Metronome', category: 'musica', tags: ['JavaScript', 'Audio'], link: '#', status: 'active', icon: 'music' },
     { id: 10, title: language === 'pt' ? 'Afinador' : 'Tuner', category: 'musica', tags: ['Web Audio API'], link: '#', status: 'active', icon: 'music' },
     
