@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Search, ExternalLink, Github, Linkedin, Mail, ArrowRight, Sparkles, Home as HomeIcon, Briefcase, User } from 'lucide-react';
+import { Search, ExternalLink, Github, Linkedin, Mail, ArrowRight, Sparkles, Home as HomeIcon, Briefcase, User, X } from 'lucide-react';
 
 export default function App() {
   const [searchTerm, setSearchTerm] = useState('');
@@ -8,6 +8,7 @@ export default function App() {
   const [scrolled, setScrolled] = useState(false);
   const [currentPage, setCurrentPage] = useState('home');
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [showContactModal, setShowContactModal] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
@@ -240,6 +241,10 @@ export default function App() {
                     <a 
                       href="mailto:michaelrpdias@gmail.com"
                       className="group flex items-center gap-2 px-5 py-2.5 border-2 border-gray-300 text-gray-700 rounded-lg hover:border-blue-600 hover:text-blue-600 transition-all"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        setShowContactModal(true);
+                      }}
                     >
                       <Mail className="w-5 h-5" />
                       <span className="font-medium">Email</span>
@@ -386,88 +391,116 @@ export default function App() {
               <div className="w-20 h-1.5 bg-gradient-to-r from-blue-600 to-indigo-600 mx-auto rounded-full"></div>
             </div>
 
-            <div className="space-y-6 text-lg text-gray-600 leading-relaxed mb-20">
+            <div className="space-y-6 text-lg text-gray-600 leading-relaxed">
               <p className="text-center md:text-left">{t.aboutText1}</p>
               <p className="text-center md:text-left">{t.aboutText2}</p>
               <p className="text-center md:text-left">{t.aboutText3}</p>
             </div>
 
-            {/* Formulário de Contato */}
-            <div className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-3xl p-8 md:p-12 border border-blue-100 shadow-xl">
-              <div className="text-center mb-10">
-                <h3 className="text-3xl font-bold text-gray-900 mb-3">{t.contactTitle}</h3>
-                <p className="text-gray-600">{t.contactSubtitle}</p>
-              </div>
-
-              <form 
-                action="https://formsubmit.co/michaelrpdias@gmail.com" 
-                method="POST"
-                onSubmit={() => setIsSubmitting(true)}
-                className="space-y-6"
+            <div className="mt-16 text-center">
+              <button
+                onClick={() => setShowContactModal(true)}
+                className="inline-flex items-center gap-3 px-10 py-4 bg-gradient-to-r from-blue-600 to-indigo-600 text-white text-lg font-semibold rounded-xl hover:shadow-xl transition-all transform hover:scale-105"
               >
-                {/* Configurações do FormSubmit */}
-                <input type="hidden" name="_captcha" value="false" />
-                <input type="hidden" name="_template" value="table" />
-                <input type="hidden" name="_subject" value="Nova mensagem do portfólio!" />
-                
-                {/* Nome */}
-                <div>
-                  <label htmlFor="name" className="block text-sm font-semibold text-gray-700 mb-2">
-                    {t.nameLabel}
-                  </label>
-                  <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    required
-                    placeholder={t.namePlaceholder}
-                    className="w-full px-4 py-3 bg-white border-2 border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
-                  />
-                </div>
-
-                {/* Email */}
-                <div>
-                  <label htmlFor="email" className="block text-sm font-semibold text-gray-700 mb-2">
-                    {t.emailLabel}
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    required
-                    placeholder={t.emailPlaceholder}
-                    className="w-full px-4 py-3 bg-white border-2 border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
-                  />
-                </div>
-
-                {/* Mensagem */}
-                <div>
-                  <label htmlFor="message" className="block text-sm font-semibold text-gray-700 mb-2">
-                    {t.messageLabel}
-                  </label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    required
-                    rows="6"
-                    placeholder={t.messagePlaceholder}
-                    className="w-full px-4 py-3 bg-white border-2 border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all resize-none"
-                  ></textarea>
-                </div>
-
-                {/* Botão de envio */}
-                <button
-                  type="submit"
-                  disabled={isSubmitting}
-                  className="w-full inline-flex items-center justify-center gap-3 px-8 py-4 bg-gradient-to-r from-blue-600 to-indigo-600 text-white text-lg font-semibold rounded-xl hover:shadow-xl transition-all transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
-                >
-                  {isSubmitting ? t.sending : t.sendButton}
-                  {!isSubmitting && <ArrowRight className="w-5 h-5" />}
-                </button>
-              </form>
+                {t.contact}
+                <ArrowRight className="w-5 h-5" />
+              </button>
             </div>
           </div>
         </section>
+      )}
+
+      {/* Modal de Contato */}
+      {showContactModal && (
+        <div 
+          className="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 flex items-center justify-center p-4 animate-fade-in"
+          onClick={() => setShowContactModal(false)}
+        >
+          <div 
+            className="bg-white rounded-3xl p-8 md:p-12 max-w-2xl w-full max-h-[90vh] overflow-y-auto shadow-2xl animate-slide-up"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Botão fechar */}
+            <div className="flex justify-between items-center mb-8">
+              <h3 className="text-3xl font-bold text-gray-900">{t.contactTitle}</h3>
+              <button
+                onClick={() => setShowContactModal(false)}
+                className="p-2 hover:bg-gray-100 rounded-full transition-colors"
+              >
+                <X className="w-6 h-6 text-gray-600" />
+              </button>
+            </div>
+
+            <p className="text-gray-600 mb-8">{t.contactSubtitle}</p>
+
+            <form 
+              action="https://formsubmit.co/michaelrpdias@gmail.com" 
+              method="POST"
+              onSubmit={() => setIsSubmitting(true)}
+              className="space-y-6"
+            >
+              {/* Configurações do FormSubmit */}
+              <input type="hidden" name="_captcha" value="false" />
+              <input type="hidden" name="_template" value="table" />
+              <input type="hidden" name="_subject" value="Nova mensagem do portfólio!" />
+              
+              {/* Nome */}
+              <div>
+                <label htmlFor="name" className="block text-sm font-semibold text-gray-700 mb-2">
+                  {t.nameLabel}
+                </label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  required
+                  placeholder={t.namePlaceholder}
+                  className="w-full px-4 py-3 bg-gray-50 border-2 border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                />
+              </div>
+
+              {/* Email */}
+              <div>
+                <label htmlFor="email" className="block text-sm font-semibold text-gray-700 mb-2">
+                  {t.emailLabel}
+                </label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  required
+                  placeholder={t.emailPlaceholder}
+                  className="w-full px-4 py-3 bg-gray-50 border-2 border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                />
+              </div>
+
+              {/* Mensagem */}
+              <div>
+                <label htmlFor="message" className="block text-sm font-semibold text-gray-700 mb-2">
+                  {t.messageLabel}
+                </label>
+                <textarea
+                  id="message"
+                  name="message"
+                  required
+                  rows="6"
+                  placeholder={t.messagePlaceholder}
+                  className="w-full px-4 py-3 bg-gray-50 border-2 border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all resize-none"
+                ></textarea>
+              </div>
+
+              {/* Botão de envio */}
+              <button
+                type="submit"
+                disabled={isSubmitting}
+                className="w-full inline-flex items-center justify-center gap-3 px-8 py-4 bg-gradient-to-r from-blue-600 to-indigo-600 text-white text-lg font-semibold rounded-xl hover:shadow-xl transition-all transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
+              >
+                {isSubmitting ? t.sending : t.sendButton}
+                {!isSubmitting && <ArrowRight className="w-5 h-5" />}
+              </button>
+            </form>
+          </div>
+        </div>
       )}
 
       {/* Footer */}
