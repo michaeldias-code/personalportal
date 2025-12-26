@@ -79,39 +79,62 @@ export default function App() {
 
   const t = translations[language];
 
-  const projects = [
-    // Ferramentas
-    { id: 1, title: language === 'pt' ? 'Comparador de Arquivos' : 'File Comparator', category: 'ferramentas', tags: ['React', 'Diff'], link: '#', status: 'active', icon: 'wrench' },
-    { id: 2, title: language === 'pt' ? 'Conversor Universal' : 'Universal Converter', category: 'ferramentas', tags: ['JavaScript', 'Utils'], link: '#', status: 'active', icon: 'wrench' },
-    
-    // Jogos
-    { id: 3, title: language === 'pt' ? 'Xadrez Online' : 'Online Chess', category: 'jogos', tags: ['React', 'Game Logic'], link: '#', status: 'active', icon: 'gamepad' },
-    { id: 4, title: language === 'pt' ? 'Damas' : 'Checkers', category: 'jogos', tags: ['JavaScript', 'Canvas'], link: '#', status: 'active', icon: 'gamepad' },
-    { id: 5, title: language === 'pt' ? 'Campo Minado' : 'Minesweeper', category: 'jogos', tags: ['React', 'Algorithms'], link: '#', status: 'active', icon: 'gamepad' },
-    { id: 6, title: 'Sudoku', category: 'jogos', tags: ['React', 'Logic'], link: '#', status: 'active', icon: 'gamepad' },
-    
-    // Recursos Musicais
-    { id: 7, title: language === 'pt' ? 'Editor de Partituras' : 'Score Editor', category: 'musica', tags: ['Web Audio', 'MIDI'], link: '#', status: 'active', icon: 'music' },
-    { id: 8, title: language === 'pt' ? 'Piano Virtual' : 'Virtual Piano', category: 'musica', tags: ['Web Audio', 'React'], link: 'https://michaelspiano.vercel.app', status: 'active', icon: 'music' },
-    { id: 9, title: language === 'pt' ? 'Metrônomo' : 'Metronome', category: 'musica', tags: ['JavaScript', 'Audio'], link: '#', status: 'active', icon: 'music' },
-    { id: 10, title: language === 'pt' ? 'Afinador' : 'Tuner', category: 'musica', tags: ['Web Audio API'], link: '#', status: 'active', icon: 'music' },
-    
-    // Segurança
-    { id: 11, title: language === 'pt' ? 'Top 10 Vulnerabilidades OWASP' : 'OWASP Top 10 Vulnerabilities', category: 'seguranca', tags: ['Security', 'Education'], link: '#', status: 'active', icon: 'shield' },
-    { id: 12, title: language === 'pt' ? 'Analisador de Senhas' : 'Password Analyzer', category: 'seguranca', tags: ['Security', 'React'], link: '#', status: 'active', icon: 'shield' },
-    
-    // Idiomas
-    { id: 13, title: language === 'pt' ? 'Teste de Inglês' : 'English Level Test', category: 'idiomas', tags: ['React', 'Education'], link: '#', status: 'active', icon: 'globe' },
-    { id: 14, title: language === 'pt' ? 'Flashcards de Vocabulário' : 'Vocabulary Flashcards', category: 'idiomas', tags: ['React', 'Learning'], link: '#', status: 'soon', icon: 'globe' },
-    
-    // Cursos
-    { id: 15, title: language === 'pt' ? 'Plataforma de Cursos' : 'Course Platform', category: 'cursos', tags: ['React', 'Education'], link: '#', status: 'soon', icon: 'book' },
-    
-    // Ciência de Dados
-    { id: 16, title: language === 'pt' ? 'Web Scraper' : 'Web Scraper', category: 'dados', tags: ['Python', 'BeautifulSoup'], link: '#', status: 'active', icon: 'chart' },
-    { id: 17, title: language === 'pt' ? 'Visualizador de Dados' : 'Data Visualizer', category: 'dados', tags: ['D3.js', 'React'], link: '#', status: 'active', icon: 'chart' },
+const projects = [
+    { 
+      id: 'ferramentas', 
+      title: language === 'pt' ? 'Ferramentas' : 'Tools', 
+      description: language === 'pt' ? 'CV Builder, Comparador de Arquivos e utilitários.' : 'CV Builder, File Comparator and utilities.',
+      keywords: ['cvbuilder', 'filecompare', 'pdf', 'diff'],
+      link: '/ferramentas/index.html', 
+      icon: 'wrench',
+      status: 'active'
+    },
+    { 
+      id: 'idiomas', 
+      title: language === 'pt' ? 'Idiomas' : 'Languages', 
+      description: language === 'pt' ? 'Testes de nivelamento e prática de Inglês.' : 'Placement tests and English practice.',
+      keywords: ['english', 'inglês', 'gramática', 'vocabulario'],
+      link: '/idiomas/index.html', 
+      icon: 'globe',
+      status: 'active'
+    },
+    { 
+      id: 'jogos', 
+      title: language === 'pt' ? 'Jogos Clássicos' : 'Classic Games', 
+      description: language === 'pt' ? 'Campo Minado, Sudoku, Xadrez, Damas e Jogo da Velha.' : 'Minesweeper, Sudoku, Chess, Checkers and Tic-Tac-Toe.',
+      keywords: ['chess', 'xadrez', 'sudoku', 'damas', 'velha', 'campo minado'],
+      link: '/jogos/index.html', 
+      icon: 'gamepad',
+      status: 'active'
+    },
+    { 
+      id: 'programacao', 
+      title: language === 'pt' ? 'Programação' : 'Programming', 
+      description: language === 'pt' ? 'E-commerce demo e testes em lógica Python.' : 'E-commerce demo and Python logic tests.',
+      keywords: ['python', 'ecommerce', 'loja', 'coding'],
+      link: '/programacao/index.html', 
+      icon: 'book',
+      status: 'active'
+    },
+    { 
+      id: 'musica', 
+      title: language === 'pt' ? 'Recursos Musicais' : 'Music Resources', 
+      description: language === 'pt' ? 'Afinador (Tuner), Editor de Partituras e Piano Virtual.' : 'Tuner, Score Editor and Virtual Piano.',
+      keywords: ['tuner', 'piano', 'partitura', 'afinador', 'metronomo'],
+      link: '/recursosmusicais/index.html', 
+      icon: 'music',
+      status: 'active'
+    },
+    { 
+      id: 'seguranca', 
+      title: language === 'pt' ? 'Segurança da Informação' : 'Information Security', 
+      description: language === 'pt' ? 'Jogo educativo baseado nas vulnerabilidades OWASP.' : 'Educational game based on OWASP vulnerabilities.',
+      keywords: ['owasp', 'segurança', 'security', 'hacking', 'jogo educativo'],
+      link: '/segurancadainformacao/index.html', 
+      icon: 'shield',
+      status: 'active'
+    }
   ];
-
   const categories = [
     { id: 'todos', name: language === 'pt' ? 'Todos' : 'All', emoji: '📚', count: projects.length },
     { id: 'ferramentas', name: language === 'pt' ? 'Ferramentas' : 'Tools', emoji: '🔧', count: projects.filter(p => p.category === 'ferramentas').length },
@@ -137,12 +160,15 @@ export default function App() {
   };
 
   const filteredProjects = projects.filter(project => {
-    const matchesSearch = project.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         project.tags.some(tag => tag.toLowerCase().includes(searchTerm.toLowerCase()));
-    const matchesCategory = selectedCategory === 'todos' || project.category === selectedCategory;
-    return matchesSearch && matchesCategory;
+    const searchLower = searchTerm.toLowerCase();
+    const matchesSearch = 
+      project.title.toLowerCase().includes(searchLower) ||
+      project.description.toLowerCase().includes(searchLower) ||
+      project.keywords.some(key => key.toLowerCase().includes(searchLower));
+    
+    return matchesSearch;
   });
-
+  
   return (
     <div className="min-h-screen bg-gradient-to-br from-white via-blue-50/30 to-white">
       {/* Navbar elegante */}
@@ -357,29 +383,22 @@ export default function App() {
                       )}
                     </div>
 
-                    <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors">
-                      {project.title}
-                    </h3>
+                    <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors">
+						{project.title}
+					</h3>
 
-                    <div className="flex flex-wrap gap-2 mb-4">
-                      {project.tags.map((tag, idx) => (
-                        <span
-                          key={idx}
-                          className="px-3 py-1 bg-gradient-to-r from-blue-50 to-indigo-50 text-blue-700 text-xs font-medium rounded-full border border-blue-100"
-                        >
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
-
-                    {project.status === 'active' && project.link !== '#' && (
-                      <a
-                        href={project.link}
-                        className="inline-flex items-center gap-2 px-4 py-2 bg-blue-600 text-white text-sm font-medium rounded-lg hover:bg-blue-700 transition-all shadow-sm hover:shadow-md"
-                      >
-                        {t.viewProject}
-                        <ArrowRight className="w-4 h-4" />
-                      </a>
+					<p className="text-sm text-gray-600 mb-4 line-clamp-2">
+					{project.description}
+					</p>
+					
+					{/* Removi as tags antigas e mantive o link para a categoria */}
+					<a
+					href={project.link}
+					className="inline-flex items-center gap-2 px-4 py-2 bg-blue-600 text-white text-sm font-medium rounded-lg hover:bg-blue-700 transition-all"
+					>
+					{t.viewProject}
+					<ArrowRight className="w-4 h-4" />
+					</a>
                     )}
                   </div>
                 );
