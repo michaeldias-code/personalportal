@@ -7,6 +7,7 @@ export default function App() {
   const [language, setLanguage] = useState('pt');
   const [scrolled, setScrolled] = useState(false);
   const [currentPage, setCurrentPage] = useState('home');
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
@@ -26,6 +27,16 @@ export default function App() {
       aboutText2: 'Meu portfólio reflete essa diversidade: desde ferramentas práticas do dia a dia até jogos que estimulam o raciocínio lógico, passando por recursos musicais e soluções de segurança. Cada projeto é uma oportunidade de experimentar novas tecnologias e compartilhar conhecimento.',
       aboutText3: 'Acredito que a melhor forma de aprender é construindo. Seja explorando ciência de dados, desenvolvendo plataformas educacionais ou criando jogos clássicos, o importante é manter a curiosidade sempre ativa.',
       contact: 'Entre em contato',
+      contactTitle: 'Vamos conversar?',
+      contactSubtitle: 'Preencha o formulário abaixo e entrarei em contato o mais breve possível.',
+      nameLabel: 'Nome',
+      namePlaceholder: 'Seu nome completo',
+      emailLabel: 'Email',
+      emailPlaceholder: 'seu@email.com',
+      messageLabel: 'Mensagem',
+      messagePlaceholder: 'Conte-me sobre seu projeto ou dúvida...',
+      sendButton: 'Enviar mensagem',
+      sending: 'Enviando...',
       footer: 'Desenvolvido com React e Tailwind CSS.',
       noResults: 'Nenhum projeto encontrado.',
       home: 'Início',
@@ -45,6 +56,16 @@ export default function App() {
       aboutText2: 'My portfolio reflects this diversity: from practical everyday tools to games that stimulate logical thinking, through musical resources and security solutions. Each project is an opportunity to experiment with new technologies and share knowledge.',
       aboutText3: 'I believe the best way to learn is by building. Whether exploring data science, developing educational platforms, or creating classic games, the important thing is to keep curiosity always active.',
       contact: 'Get in touch',
+      contactTitle: "Let's talk?",
+      contactSubtitle: 'Fill out the form below and I will get back to you as soon as possible.',
+      nameLabel: 'Name',
+      namePlaceholder: 'Your full name',
+      emailLabel: 'Email',
+      emailPlaceholder: 'your@email.com',
+      messageLabel: 'Message',
+      messagePlaceholder: 'Tell me about your project or question...',
+      sendButton: 'Send message',
+      sending: 'Sending...',
       footer: 'Built with React and Tailwind CSS.',
       noResults: 'No projects found.',
       home: 'Home',
@@ -365,20 +386,85 @@ export default function App() {
               <div className="w-20 h-1.5 bg-gradient-to-r from-blue-600 to-indigo-600 mx-auto rounded-full"></div>
             </div>
 
-            <div className="space-y-6 text-lg text-gray-600 leading-relaxed">
+            <div className="space-y-6 text-lg text-gray-600 leading-relaxed mb-20">
               <p className="text-center md:text-left">{t.aboutText1}</p>
               <p className="text-center md:text-left">{t.aboutText2}</p>
               <p className="text-center md:text-left">{t.aboutText3}</p>
             </div>
 
-            <div className="mt-16 text-center">
-              <a
-                href="mailto:michaelrpdias@gmail.com"
-                className="inline-flex items-center gap-3 px-10 py-4 bg-gradient-to-r from-blue-600 to-indigo-600 text-white text-lg font-semibold rounded-xl hover:shadow-xl transition-all transform hover:scale-105"
+            {/* Formulário de Contato */}
+            <div className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-3xl p-8 md:p-12 border border-blue-100 shadow-xl">
+              <div className="text-center mb-10">
+                <h3 className="text-3xl font-bold text-gray-900 mb-3">{t.contactTitle}</h3>
+                <p className="text-gray-600">{t.contactSubtitle}</p>
+              </div>
+
+              <form 
+                action="https://formsubmit.co/michaelrpdias@gmail.com" 
+                method="POST"
+                onSubmit={() => setIsSubmitting(true)}
+                className="space-y-6"
               >
-                {t.contact}
-                <ArrowRight className="w-5 h-5" />
-              </a>
+                {/* Configurações do FormSubmit */}
+                <input type="hidden" name="_captcha" value="false" />
+                <input type="hidden" name="_template" value="table" />
+                <input type="hidden" name="_subject" value="Nova mensagem do portfólio!" />
+                
+                {/* Nome */}
+                <div>
+                  <label htmlFor="name" className="block text-sm font-semibold text-gray-700 mb-2">
+                    {t.nameLabel}
+                  </label>
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    required
+                    placeholder={t.namePlaceholder}
+                    className="w-full px-4 py-3 bg-white border-2 border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                  />
+                </div>
+
+                {/* Email */}
+                <div>
+                  <label htmlFor="email" className="block text-sm font-semibold text-gray-700 mb-2">
+                    {t.emailLabel}
+                  </label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    required
+                    placeholder={t.emailPlaceholder}
+                    className="w-full px-4 py-3 bg-white border-2 border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                  />
+                </div>
+
+                {/* Mensagem */}
+                <div>
+                  <label htmlFor="message" className="block text-sm font-semibold text-gray-700 mb-2">
+                    {t.messageLabel}
+                  </label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    required
+                    rows="6"
+                    placeholder={t.messagePlaceholder}
+                    className="w-full px-4 py-3 bg-white border-2 border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all resize-none"
+                  ></textarea>
+                </div>
+
+                {/* Botão de envio */}
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="w-full inline-flex items-center justify-center gap-3 px-8 py-4 bg-gradient-to-r from-blue-600 to-indigo-600 text-white text-lg font-semibold rounded-xl hover:shadow-xl transition-all transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
+                >
+                  {isSubmitting ? t.sending : t.sendButton}
+                  {!isSubmitting && <ArrowRight className="w-5 h-5" />}
+                </button>
+              </form>
             </div>
           </div>
         </section>
