@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { Search, ExternalLink, Github, Linkedin, Mail, ArrowRight, Sparkles } from 'lucide-react';
+import { Search, ExternalLink, Github, Linkedin, Mail, ArrowRight, Sparkles, Home as HomeIcon, Briefcase, User } from 'lucide-react';
 
 export default function App() {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('todos');
   const [language, setLanguage] = useState('pt');
   const [scrolled, setScrolled] = useState(false);
+  const [currentPage, setCurrentPage] = useState('home');
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
@@ -117,15 +118,30 @@ export default function App() {
           <div className="flex justify-between items-center">
             {/* Links de navegação */}
             <div className="hidden md:flex items-center gap-8">
-              <a href="#home" className="text-gray-700 hover:text-blue-600 transition-colors font-medium">
+              <button 
+                onClick={() => setCurrentPage('home')}
+                className={`transition-colors font-medium ${
+                  currentPage === 'home' ? 'text-blue-600' : 'text-gray-700 hover:text-blue-600'
+                }`}
+              >
                 {t.home}
-              </a>
-              <a href="#projects" className="text-gray-700 hover:text-blue-600 transition-colors font-medium">
+              </button>
+              <button 
+                onClick={() => setCurrentPage('projects')}
+                className={`transition-colors font-medium ${
+                  currentPage === 'projects' ? 'text-blue-600' : 'text-gray-700 hover:text-blue-600'
+                }`}
+              >
                 {t.projects}
-              </a>
-              <a href="#about" className="text-gray-700 hover:text-blue-600 transition-colors font-medium">
+              </button>
+              <button 
+                onClick={() => setCurrentPage('about')}
+                className={`transition-colors font-medium ${
+                  currentPage === 'about' ? 'text-blue-600' : 'text-gray-700 hover:text-blue-600'
+                }`}
+              >
                 {t.about}
-              </a>
+              </button>
             </div>
 
             {/* Seletor de idioma */}
@@ -155,206 +171,218 @@ export default function App() {
         </div>
       </nav>
 
-      {/* Hero Section */}
-      <header id="home" className="pt-20">
-        <div className="max-w-7xl mx-auto px-6 py-12">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            {/* Conteúdo à esquerda */}
-            <div className="space-y-6 order-2 md:order-1">
-              <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-100 rounded-full">
-                <Sparkles className="w-4 h-4 text-blue-600" />
-                <span className="text-blue-700 text-sm font-medium">{t.available}</span>
-              </div>
-              
-              <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-gray-900 leading-tight">
-                {t.hello}<br />
-                <span className="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
-                  Michael Dias
-                </span>
-              </h1>
-              
-              <p className="text-lg sm:text-xl text-gray-600 leading-relaxed">
-                {t.description}
-              </p>
+      {/* Página Home */}
+      {currentPage === 'home' && (
+        <>
+          {/* Hero Section */}
+          <header className="pt-20">
+            <div className="max-w-7xl mx-auto px-6 py-12">
+              <div className="grid md:grid-cols-2 gap-12 items-center">
+                {/* Conteúdo à esquerda */}
+                <div className="space-y-6 order-2 md:order-1">
+                  <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-100 rounded-full">
+                    <Sparkles className="w-4 h-4 text-blue-600" />
+                    <span className="text-blue-700 text-sm font-medium">{t.available}</span>
+                  </div>
+                  
+                  <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-gray-900 leading-tight">
+                    {t.hello}<br />
+                    <span className="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
+                      Michael Dias
+                    </span>
+                  </h1>
+                  
+                  <p className="text-lg sm:text-xl text-gray-600 leading-relaxed">
+                    {t.description}
+                  </p>
 
-              {/* Links sociais */}
-              <div className="flex flex-wrap gap-3 pt-4">
-                <a 
-                  href="https://github.com/michaeldias-code/personalportal" 
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group flex items-center gap-2 px-5 py-2.5 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition-all shadow-md hover:shadow-lg"
-                >
-                  <Github className="w-5 h-5" />
-                  <span className="font-medium">GitHub</span>
-                </a>
-                <a 
-                  href="https://www.linkedin.com/in/dias-michael/" 
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group flex items-center gap-2 px-5 py-2.5 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-all shadow-md hover:shadow-lg"
-                >
-                  <Linkedin className="w-5 h-5" />
-                  <span className="font-medium">LinkedIn</span>
-                </a>
-                <a 
-                  href="mailto:michaelrpdias@gmail.com"
-                  className="group flex items-center gap-2 px-5 py-2.5 border-2 border-gray-300 text-gray-700 rounded-lg hover:border-blue-600 hover:text-blue-600 transition-all"
-                >
-                  <Mail className="w-5 h-5" />
-                  <span className="font-medium">Email</span>
-                </a>
-              </div>
-            </div>
+                  {/* Links sociais */}
+                  <div className="flex flex-wrap gap-3 pt-4">
+                    <a 
+                      href="https://github.com/michaeldias-code/personalportal" 
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="group flex items-center gap-2 px-5 py-2.5 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition-all shadow-md hover:shadow-lg"
+                    >
+                      <Github className="w-5 h-5" />
+                      <span className="font-medium">GitHub</span>
+                    </a>
+                    <a 
+                      href="https://www.linkedin.com/in/dias-michael/" 
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="group flex items-center gap-2 px-5 py-2.5 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-all shadow-md hover:shadow-lg"
+                    >
+                      <Linkedin className="w-5 h-5" />
+                      <span className="font-medium">LinkedIn</span>
+                    </a>
+                    <a 
+                      href="mailto:michaelrpdias@gmail.com"
+                      className="group flex items-center gap-2 px-5 py-2.5 border-2 border-gray-300 text-gray-700 rounded-lg hover:border-blue-600 hover:text-blue-600 transition-all"
+                    >
+                      <Mail className="w-5 h-5" />
+                      <span className="font-medium">Email</span>
+                    </a>
+                  </div>
+                </div>
 
-            {/* Foto à direita */}
-            <div className="flex justify-center md:justify-end order-1 md:order-2">
-              <div className="relative group">
-                <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-3xl blur opacity-25 group-hover:opacity-40 transition duration-300"></div>
-                <div className="relative w-64 h-80 sm:w-72 sm:h-[22rem] md:w-80 md:h-96 rounded-3xl overflow-hidden border-4 border-white shadow-2xl">
-                  <img 
-                    src="/foto.jpg" 
-                    alt="Michael Dias" 
-                    onError={(e) => {
-                      e.target.onerror = null;
-                      e.target.src = "https://via.placeholder.com/400x500?text=Michael+Dias";
-                    }}
-                    className="w-full h-full object-cover filter grayscale group-hover:grayscale-0 transition-all duration-500"
-                  />
+                {/* Foto à direita */}
+                <div className="flex justify-center md:justify-end order-1 md:order-2">
+                  <div className="relative group">
+                    <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-3xl blur opacity-25 group-hover:opacity-40 transition duration-300"></div>
+                    <div className="relative w-64 h-80 sm:w-72 sm:h-[22rem] md:w-80 md:h-96 rounded-3xl overflow-hidden border-4 border-white shadow-2xl">
+                      <img 
+                        src="/foto.jpg" 
+                        alt="Michael Dias" 
+                        onError={(e) => {
+                          e.target.onerror = null;
+                          e.target.src = "https://via.placeholder.com/400x500?text=Michael+Dias";
+                        }}
+                        className="w-full h-full object-cover filter grayscale group-hover:grayscale-0 transition-all duration-500"
+                      />
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        </div>
-      </header>
+          </header>
+        </>
+      )}
 
-      {/* Barra de pesquisa e filtros */}
-      <section id="projects" className="bg-white/50 backdrop-blur-sm border-y border-gray-200">
-        <div className="max-w-7xl mx-auto px-6 py-10">
-          {/* Busca */}
-          <div className="relative mb-8 max-w-2xl mx-auto">
-            <Search className="absolute left-5 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
-            <input
-              type="text"
-              placeholder={t.searchPlaceholder}
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full pl-14 pr-6 py-4 bg-white border-2 border-gray-200 rounded-2xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all shadow-sm text-lg"
-            />
-          </div>
-
-          {/* Categorias */}
-          <div className="flex flex-wrap gap-3 justify-center">
-            {categories.map(cat => (
-              <button
-                key={cat.id}
-                onClick={() => setSelectedCategory(cat.id)}
-                className={`flex items-center gap-2 px-5 py-2.5 rounded-xl font-medium transition-all shadow-sm hover:shadow-md ${
-                  selectedCategory === cat.id
-                    ? 'bg-gradient-to-r from-blue-600 to-indigo-600 text-white scale-105'
-                    : 'bg-white text-gray-700 hover:bg-gray-50 border border-gray-200'
-                }`}
-              >
-                <span className="text-lg">{cat.emoji}</span>
-                <span>{cat.name}</span>
-                <span className={`text-xs px-2 py-0.5 rounded-full ${
-                  selectedCategory === cat.id ? 'bg-white/20' : 'bg-gray-100'
-                }`}>
-                  {cat.count}
-                </span>
-              </button>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Grid de projetos */}
-      <section className="max-w-7xl mx-auto px-6 py-20">
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredProjects.map(project => (
-            <div
-              key={project.id}
-              className="group relative bg-white border border-gray-200 rounded-2xl p-7 hover:shadow-2xl hover:border-blue-200 transition-all duration-300 overflow-hidden"
-            >
-              {/* Badge de status */}
-              {project.status === 'soon' && (
-                <div className="absolute top-4 right-4 px-3 py-1 bg-amber-100 text-amber-700 text-xs font-semibold rounded-full">
-                  {t.comingSoon}
-                </div>
-              )}
-
-              <div className="flex items-start justify-between mb-5">
-                <div className="w-14 h-14 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-2xl flex items-center justify-center text-white font-bold text-2xl shadow-md group-hover:scale-110 transition-transform">
-                  {project.title.charAt(0)}
-                </div>
-                {project.status === 'active' && (
-                  <ExternalLink className="w-5 h-5 text-gray-400 group-hover:text-blue-600 transition-colors" />
-                )}
+      {/* Página de Projetos */}
+      {currentPage === 'projects' && (
+        <>
+          {/* Barra de pesquisa e filtros */}
+          <section className="bg-white/50 backdrop-blur-sm border-y border-gray-200 mt-20">
+            <div className="max-w-7xl mx-auto px-6 py-10">
+              {/* Busca */}
+              <div className="relative mb-8 max-w-2xl mx-auto">
+                <Search className="absolute left-5 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
+                <input
+                  type="text"
+                  placeholder={t.searchPlaceholder}
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                  className="w-full pl-14 pr-6 py-4 bg-white border-2 border-gray-200 rounded-2xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all shadow-sm text-lg"
+                />
               </div>
 
-              <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors">
-                {project.title}
-              </h3>
-
-              <div className="flex flex-wrap gap-2 mb-4">
-                {project.tags.map((tag, idx) => (
-                  <span
-                    key={idx}
-                    className="px-3 py-1 bg-gradient-to-r from-blue-50 to-indigo-50 text-blue-700 text-xs font-medium rounded-full border border-blue-100"
+              {/* Categorias */}
+              <div className="flex flex-wrap gap-3 justify-center">
+                {categories.map(cat => (
+                  <button
+                    key={cat.id}
+                    onClick={() => setSelectedCategory(cat.id)}
+                    className={`flex items-center gap-2 px-5 py-2.5 rounded-xl font-medium transition-all shadow-sm hover:shadow-md ${
+                      selectedCategory === cat.id
+                        ? 'bg-gradient-to-r from-blue-600 to-indigo-600 text-white scale-105'
+                        : 'bg-white text-gray-700 hover:bg-gray-50 border border-gray-200'
+                    }`}
                   >
-                    {tag}
-                  </span>
+                    <span className="text-lg">{cat.emoji}</span>
+                    <span>{cat.name}</span>
+                    <span className={`text-xs px-2 py-0.5 rounded-full ${
+                      selectedCategory === cat.id ? 'bg-white/20' : 'bg-gray-100'
+                    }`}>
+                      {cat.count}
+                    </span>
+                  </button>
                 ))}
               </div>
+            </div>
+          </section>
 
-              {project.status === 'active' && project.link !== '#' && (
-                <a
-                  href={project.link}
-                  className="inline-flex items-center gap-2 px-4 py-2 bg-blue-600 text-white text-sm font-medium rounded-lg hover:bg-blue-700 transition-all shadow-sm hover:shadow-md"
+          {/* Grid de projetos */}
+          <section className="max-w-7xl mx-auto px-6 py-20">
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {filteredProjects.map(project => (
+                <div
+                  key={project.id}
+                  className="group relative bg-white border border-gray-200 rounded-2xl p-7 hover:shadow-2xl hover:border-blue-200 transition-all duration-300 overflow-hidden"
                 >
-                  {t.viewProject}
-                  <ArrowRight className="w-4 h-4" />
-                </a>
-              )}
+                  {/* Badge de status */}
+                  {project.status === 'soon' && (
+                    <div className="absolute top-4 right-4 px-3 py-1 bg-amber-100 text-amber-700 text-xs font-semibold rounded-full">
+                      {t.comingSoon}
+                    </div>
+                  )}
+
+                  <div className="flex items-start justify-between mb-5">
+                    <div className="w-14 h-14 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-2xl flex items-center justify-center text-white font-bold text-2xl shadow-md group-hover:scale-110 transition-transform">
+                      {project.title.charAt(0)}
+                    </div>
+                    {project.status === 'active' && (
+                      <ExternalLink className="w-5 h-5 text-gray-400 group-hover:text-blue-600 transition-colors" />
+                    )}
+                  </div>
+
+                  <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors">
+                    {project.title}
+                  </h3>
+
+                  <div className="flex flex-wrap gap-2 mb-4">
+                    {project.tags.map((tag, idx) => (
+                      <span
+                        key={idx}
+                        className="px-3 py-1 bg-gradient-to-r from-blue-50 to-indigo-50 text-blue-700 text-xs font-medium rounded-full border border-blue-100"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+
+                  {project.status === 'active' && project.link !== '#' && (
+                    <a
+                      href={project.link}
+                      className="inline-flex items-center gap-2 px-4 py-2 bg-blue-600 text-white text-sm font-medium rounded-lg hover:bg-blue-700 transition-all shadow-sm hover:shadow-md"
+                    >
+                      {t.viewProject}
+                      <ArrowRight className="w-4 h-4" />
+                    </a>
+                  )}
+                </div>
+              ))}
             </div>
-          ))}
-        </div>
 
-        {filteredProjects.length === 0 && (
-          <div className="text-center py-20">
-            <div className="w-24 h-24 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
-              <Search className="w-12 h-12 text-gray-400" />
+            {filteredProjects.length === 0 && (
+              <div className="text-center py-20">
+                <div className="w-24 h-24 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Search className="w-12 h-12 text-gray-400" />
+                </div>
+                <p className="text-gray-500 text-xl">{t.noResults}</p>
+              </div>
+            )}
+          </section>
+        </>
+      )}
+
+      {/* Página Sobre */}
+      {currentPage === 'about' && (
+        <section className="pt-32 pb-24 min-h-screen">
+          <div className="max-w-4xl mx-auto px-6">
+            <div className="text-center mb-16">
+              <h2 className="text-4xl font-bold text-gray-900 mb-4">{t.aboutTitle}</h2>
+              <div className="w-20 h-1.5 bg-gradient-to-r from-blue-600 to-indigo-600 mx-auto rounded-full"></div>
             </div>
-            <p className="text-gray-500 text-xl">{t.noResults}</p>
-          </div>
-        )}
-      </section>
 
-      {/* Seção "Sobre" */}
-      <section id="about" className="bg-gradient-to-br from-gray-50 via-white to-blue-50/30 border-t border-gray-200">
-        <div className="max-w-4xl mx-auto px-6 py-24">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">{t.aboutTitle}</h2>
-            <div className="w-20 h-1.5 bg-gradient-to-r from-blue-600 to-indigo-600 mx-auto rounded-full"></div>
-          </div>
+            <div className="space-y-6 text-lg text-gray-600 leading-relaxed">
+              <p className="text-center md:text-left">{t.aboutText1}</p>
+              <p className="text-center md:text-left">{t.aboutText2}</p>
+              <p className="text-center md:text-left">{t.aboutText3}</p>
+            </div>
 
-          <div className="space-y-6 text-lg text-gray-600 leading-relaxed">
-            <p className="text-center md:text-left">{t.aboutText1}</p>
-            <p className="text-center md:text-left">{t.aboutText2}</p>
-            <p className="text-center md:text-left">{t.aboutText3}</p>
+            <div className="mt-16 text-center">
+              <a
+                href="mailto:michaelrpdias@gmail.com"
+                className="inline-flex items-center gap-3 px-10 py-4 bg-gradient-to-r from-blue-600 to-indigo-600 text-white text-lg font-semibold rounded-xl hover:shadow-xl transition-all transform hover:scale-105"
+              >
+                {t.contact}
+                <ArrowRight className="w-5 h-5" />
+              </a>
+            </div>
           </div>
-
-          <div className="mt-16 text-center">
-            <a
-              href="mailto:michaelrpdias@gmail.com"
-              className="inline-flex items-center gap-3 px-10 py-4 bg-gradient-to-r from-blue-600 to-indigo-600 text-white text-lg font-semibold rounded-xl hover:shadow-xl transition-all transform hover:scale-105"
-            >
-              {t.contact}
-              <ArrowRight className="w-5 h-5" />
-            </a>
-          </div>
-        </div>
-      </section>
+        </section>
+      )}
 
       {/* Footer */}
       <footer className="border-t border-gray-200 bg-white">
