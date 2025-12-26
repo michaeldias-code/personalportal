@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Search, ExternalLink, Github, Linkedin, Mail, ArrowRight, Sparkles, Home as HomeIcon, Briefcase, User, X, Wrench, Gamepad2, Music, Shield, Globe, BookOpen, BarChart3 } from 'lucide-react';
+import { Search, ExternalLink, Github, Linkedin, Mail, ArrowRight, Sparkles, Home as HomeIcon, Briefcase, User, X, Wrench, Gamepad2, Music, Shield, Globe, Code } from 'lucide-react';
 
 export default function App() {
   const [searchTerm, setSearchTerm] = useState('');
@@ -86,9 +86,10 @@ export default function App() {
       title: language === 'pt' ? 'Ferramentas' : 'Tools',
       icon: Wrench,
       description: language === 'pt'
-        ? 'Comparador de arquivos para identificar diferenças, conversor universal para múltiplos formatos, e outras utilidades práticas para o dia a dia.'
-        : 'File comparator to identify differences, universal converter for multiple formats, and other practical utilities for daily use.',
-      keywords: ['comparador', 'arquivos', 'conversor', 'universal', 'diff', 'utils', 'ferramentas', 'tools']
+        ? 'Editor de currículo profissional, comparador de arquivos para identificar diferenças, e outras utilidades práticas para o dia a dia.'
+        : 'Professional resume editor, file comparator to identify differences, and other practical utilities for daily use.',
+      keywords: ['comparador', 'arquivos', 'currículo', 'editor', 'diff', 'utils', 'ferramentas', 'tools'],
+      link: 'https://michaelstools.vercel.app/'
     },
     {
       id: 'jogos',
@@ -97,7 +98,8 @@ export default function App() {
       description: language === 'pt'
         ? 'Xadrez online com inteligência artificial, damas clássicas, campo minado desafiador e sudoku para exercitar a mente.'
         : 'Online chess with artificial intelligence, classic checkers, challenging minesweeper and sudoku to exercise the mind.',
-      keywords: ['xadrez', 'chess', 'damas', 'checkers', 'campo minado', 'minesweeper', 'sudoku', 'jogos', 'games']
+      keywords: ['xadrez', 'chess', 'damas', 'checkers', 'campo minado', 'minesweeper', 'sudoku', 'jogos', 'games'],
+      link: 'https://michaelsgames.vercel.app/'
     },
     {
       id: 'musica',
@@ -106,43 +108,38 @@ export default function App() {
       description: language === 'pt'
         ? 'Piano virtual interativo, editor de partituras completo, metrônomo preciso e afinador profissional para músicos de todos os níveis.'
         : 'Interactive virtual piano, complete score editor, precise metronome and professional tuner for musicians of all levels.',
-      keywords: ['piano', 'virtual', 'partituras', 'editor', 'metrônomo', 'metronome', 'afinador', 'tuner', 'musica', 'music', 'recursos musicais']
+      keywords: ['piano', 'virtual', 'partituras', 'editor', 'metrônomo', 'metronome', 'afinador', 'tuner', 'musica', 'music', 'recursos musicais'],
+      link: 'https://recursosmusicais.vercel.app/'
     },
     {
       id: 'seguranca',
       title: language === 'pt' ? 'Segurança' : 'Security',
       icon: Shield,
       description: language === 'pt'
-        ? 'Top 10 vulnerabilidades OWASP explicadas, analisador de senhas robusto e ferramentas para conscientização em cibersegurança.'
-        : 'Top 10 OWASP vulnerabilities explained, robust password analyzer and tools for cybersecurity awareness.',
-      keywords: ['owasp', 'vulnerabilidades', 'senhas', 'analisador', 'segurança', 'security', 'password', 'analyzer']
+        ? 'Top 10 vulnerabilidades OWASP explicadas e ferramentas para conscientização em cibersegurança.'
+        : 'Top 10 OWASP vulnerabilities explained and tools for cybersecurity awareness.',
+      keywords: ['owasp', 'vulnerabilidades', 'segurança', 'security', 'cybersecurity', 'cibersegurança'],
+      link: 'https://websecurity.vercel.app'
     },
     {
       id: 'idiomas',
       title: language === 'pt' ? 'Idiomas' : 'Languages',
       icon: Globe,
       description: language === 'pt'
-        ? 'Teste de nível de inglês personalizado e flashcards interativos para aprendizagem de vocabulário em múltiplos idiomas.'
-        : 'Customized English level test and interactive flashcards for vocabulary learning in multiple languages.',
-      keywords: ['inglês', 'english', 'teste', 'test', 'flashcards', 'vocabulário', 'vocabulary', 'idiomas', 'languages']
-    },
-    {
-      id: 'cursos',
-      title: language === 'pt' ? 'Cursos' : 'Courses',
-      icon: BookOpen,
-      description: language === 'pt'
-        ? 'Plataforma completa de cursos online com acompanhamento de progresso, certificados e conteúdo educacional diversificado.'
-        : 'Complete online course platform with progress tracking, certificates and diverse educational content.',
-      keywords: ['cursos', 'courses', 'plataforma', 'platform', 'educação', 'education', 'online']
+        ? 'Teste de nível de inglês personalizado e ferramentas para aprendizagem de vocabulário em múltiplos idiomas.'
+        : 'Customized English level test and tools for vocabulary learning in multiple languages.',
+      keywords: ['inglês', 'english', 'teste', 'test', 'ferramentas', 'vocabulário', 'vocabulary', 'idiomas', 'languages'],
+      link: 'https://studylanguages.vercel.app'
     },
     {
       id: 'dados',
-      title: language === 'pt' ? 'Ciência de Dados' : 'Data Science',
-      icon: BarChart3,
+      title: language === 'pt' ? 'Programação' : 'Programming',
+      icon: Code,
       description: language === 'pt'
-        ? 'Web scraper inteligente, visualizador de dados interativo e ferramentas para análise e processamento de dados.'
-        : 'Intelligent web scraper, interactive data visualizer and tools for data analysis and processing.',
-      keywords: ['dados', 'data', 'scraper', 'visualizador', 'visualizer', 'ciência', 'science', 'análise', 'analysis']
+        ? 'Teste de Python interativo, plataforma de e-commerce completa e ferramentas para desenvolvimento de software.'
+        : 'Interactive Python test, complete e-commerce platform and tools for software development.',
+      keywords: ['python', 'teste', 'programming', 'desenvolvimento', 'software', 'e-commerce', 'development'],
+      link: 'https://michaelsprogramming.vercel.app/'
     }
   ];
   const getProjectIcon = (iconName) => {
@@ -152,8 +149,7 @@ export default function App() {
       music: Music,
       shield: Shield,
       globe: Globe,
-      book: BookOpen,
-      chart: BarChart3
+      code: Code
     };
     return icons[iconName] || Wrench;
   };
@@ -390,10 +386,13 @@ export default function App() {
                       {category.description}
                     </p>
 
-                    <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-600 text-white text-sm font-medium rounded-lg hover:bg-blue-700 transition-all shadow-sm hover:shadow-md">
+                    <button
+                      onClick={() => category.link && window.open(category.link, '_blank')}
+                      className="inline-flex items-center gap-2 px-4 py-2 bg-blue-600 text-white text-sm font-medium rounded-lg hover:bg-blue-700 transition-all shadow-sm hover:shadow-md cursor-pointer"
+                    >
                       {language === 'pt' ? 'Explorar categoria' : 'Explore category'}
                       <ArrowRight className="w-4 h-4" />
-                    </div>
+                    </button>
                   </div>
                 );
               })}
