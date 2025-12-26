@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Search, ExternalLink, Github, Linkedin, Mail, ArrowRight, Sparkles, Home as HomeIcon, Briefcase, User, X } from 'lucide-react';
+import { Search, ExternalLink, Github, Linkedin, Mail, ArrowRight, Sparkles, Home as HomeIcon, Briefcase, User, X, Wrench, Gamepad2, Music, Shield, Globe, BookOpen, BarChart3 } from 'lucide-react';
 
 export default function App() {
   const [searchTerm, setSearchTerm] = useState('');
@@ -81,35 +81,35 @@ export default function App() {
 
   const projects = [
     // Ferramentas
-    { id: 1, title: language === 'pt' ? 'Comparador de Arquivos' : 'File Comparator', category: 'ferramentas', tags: ['React', 'Diff'], link: '#', status: 'active' },
-    { id: 2, title: language === 'pt' ? 'Conversor Universal' : 'Universal Converter', category: 'ferramentas', tags: ['JavaScript', 'Utils'], link: '#', status: 'active' },
+    { id: 1, title: language === 'pt' ? 'Comparador de Arquivos' : 'File Comparator', category: 'ferramentas', tags: ['React', 'Diff'], link: '#', status: 'active', icon: 'wrench' },
+    { id: 2, title: language === 'pt' ? 'Conversor Universal' : 'Universal Converter', category: 'ferramentas', tags: ['JavaScript', 'Utils'], link: '#', status: 'active', icon: 'wrench' },
     
     // Jogos
-    { id: 3, title: language === 'pt' ? 'Xadrez Online' : 'Online Chess', category: 'jogos', tags: ['React', 'Game Logic'], link: '#', status: 'active' },
-    { id: 4, title: language === 'pt' ? 'Damas' : 'Checkers', category: 'jogos', tags: ['JavaScript', 'Canvas'], link: '#', status: 'active' },
-    { id: 5, title: language === 'pt' ? 'Campo Minado' : 'Minesweeper', category: 'jogos', tags: ['React', 'Algorithms'], link: '#', status: 'active' },
-    { id: 6, title: 'Sudoku', category: 'jogos', tags: ['React', 'Logic'], link: '#', status: 'active' },
+    { id: 3, title: language === 'pt' ? 'Xadrez Online' : 'Online Chess', category: 'jogos', tags: ['React', 'Game Logic'], link: '#', status: 'active', icon: 'gamepad' },
+    { id: 4, title: language === 'pt' ? 'Damas' : 'Checkers', category: 'jogos', tags: ['JavaScript', 'Canvas'], link: '#', status: 'active', icon: 'gamepad' },
+    { id: 5, title: language === 'pt' ? 'Campo Minado' : 'Minesweeper', category: 'jogos', tags: ['React', 'Algorithms'], link: '#', status: 'active', icon: 'gamepad' },
+    { id: 6, title: 'Sudoku', category: 'jogos', tags: ['React', 'Logic'], link: '#', status: 'active', icon: 'gamepad' },
     
     // Recursos Musicais
-    { id: 7, title: language === 'pt' ? 'Editor de Partituras' : 'Score Editor', category: 'musica', tags: ['Web Audio', 'MIDI'], link: '#', status: 'active' },
-    { id: 8, title: language === 'pt' ? 'Piano Virtual' : 'Virtual Piano', category: 'musica', tags: ['Web Audio', 'React'], link: '#', status: 'active' },
-    { id: 9, title: language === 'pt' ? 'Metrônomo' : 'Metronome', category: 'musica', tags: ['JavaScript', 'Audio'], link: '#', status: 'active' },
-    { id: 10, title: language === 'pt' ? 'Afinador' : 'Tuner', category: 'musica', tags: ['Web Audio API'], link: '#', status: 'active' },
+    { id: 7, title: language === 'pt' ? 'Editor de Partituras' : 'Score Editor', category: 'musica', tags: ['Web Audio', 'MIDI'], link: '#', status: 'active', icon: 'music' },
+    { id: 8, title: language === 'pt' ? 'Piano Virtual' : 'Virtual Piano', category: 'musica', tags: ['Web Audio', 'React'], link: '#', status: 'active', icon: 'music' },
+    { id: 9, title: language === 'pt' ? 'Metrônomo' : 'Metronome', category: 'musica', tags: ['JavaScript', 'Audio'], link: '#', status: 'active', icon: 'music' },
+    { id: 10, title: language === 'pt' ? 'Afinador' : 'Tuner', category: 'musica', tags: ['Web Audio API'], link: '#', status: 'active', icon: 'music' },
     
     // Segurança
-    { id: 11, title: language === 'pt' ? 'Top 10 Vulnerabilidades OWASP' : 'OWASP Top 10 Vulnerabilities', category: 'seguranca', tags: ['Security', 'Education'], link: '#', status: 'active' },
-    { id: 12, title: language === 'pt' ? 'Analisador de Senhas' : 'Password Analyzer', category: 'seguranca', tags: ['Security', 'React'], link: '#', status: 'active' },
+    { id: 11, title: language === 'pt' ? 'Top 10 Vulnerabilidades OWASP' : 'OWASP Top 10 Vulnerabilities', category: 'seguranca', tags: ['Security', 'Education'], link: '#', status: 'active', icon: 'shield' },
+    { id: 12, title: language === 'pt' ? 'Analisador de Senhas' : 'Password Analyzer', category: 'seguranca', tags: ['Security', 'React'], link: '#', status: 'active', icon: 'shield' },
     
     // Idiomas
-    { id: 13, title: language === 'pt' ? 'Teste de Inglês' : 'English Level Test', category: 'idiomas', tags: ['React', 'Education'], link: '#', status: 'active' },
-    { id: 14, title: language === 'pt' ? 'Flashcards de Vocabulário' : 'Vocabulary Flashcards', category: 'idiomas', tags: ['React', 'Learning'], link: '#', status: 'soon' },
+    { id: 13, title: language === 'pt' ? 'Teste de Inglês' : 'English Level Test', category: 'idiomas', tags: ['React', 'Education'], link: '#', status: 'active', icon: 'globe' },
+    { id: 14, title: language === 'pt' ? 'Flashcards de Vocabulário' : 'Vocabulary Flashcards', category: 'idiomas', tags: ['React', 'Learning'], link: '#', status: 'soon', icon: 'globe' },
     
     // Cursos
-    { id: 15, title: language === 'pt' ? 'Plataforma de Cursos' : 'Course Platform', category: 'cursos', tags: ['React', 'Education'], link: '#', status: 'soon' },
+    { id: 15, title: language === 'pt' ? 'Plataforma de Cursos' : 'Course Platform', category: 'cursos', tags: ['React', 'Education'], link: '#', status: 'soon', icon: 'book' },
     
     // Ciência de Dados
-    { id: 16, title: language === 'pt' ? 'Web Scraper' : 'Web Scraper', category: 'dados', tags: ['Python', 'BeautifulSoup'], link: '#', status: 'active' },
-    { id: 17, title: language === 'pt' ? 'Visualizador de Dados' : 'Data Visualizer', category: 'dados', tags: ['D3.js', 'React'], link: '#', status: 'active' },
+    { id: 16, title: language === 'pt' ? 'Web Scraper' : 'Web Scraper', category: 'dados', tags: ['Python', 'BeautifulSoup'], link: '#', status: 'active', icon: 'chart' },
+    { id: 17, title: language === 'pt' ? 'Visualizador de Dados' : 'Data Visualizer', category: 'dados', tags: ['D3.js', 'React'], link: '#', status: 'active', icon: 'chart' },
   ];
 
   const categories = [
@@ -122,6 +122,19 @@ export default function App() {
     { id: 'cursos', name: language === 'pt' ? 'Cursos' : 'Courses', emoji: '📖', count: projects.filter(p => p.category === 'cursos').length },
     { id: 'dados', name: language === 'pt' ? 'Ciência de Dados' : 'Data Science', emoji: '📊', count: projects.filter(p => p.category === 'dados').length },
   ];
+
+  const getProjectIcon = (iconName) => {
+    const icons = {
+      wrench: Wrench,
+      gamepad: Gamepad2,
+      music: Music,
+      shield: Shield,
+      globe: Globe,
+      book: BookOpen,
+      chart: BarChart3
+    };
+    return icons[iconName] || Wrench;
+  };
 
   const filteredProjects = projects.filter(project => {
     const matchesSearch = project.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -321,53 +334,56 @@ export default function App() {
           {/* Grid de projetos */}
           <section className="max-w-7xl mx-auto px-6 py-20">
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {filteredProjects.map(project => (
-                <div
-                  key={project.id}
-                  className="group relative bg-white border border-gray-200 rounded-2xl p-7 hover:shadow-2xl hover:border-blue-200 transition-all duration-300 overflow-hidden"
-                >
-                  {/* Badge de status */}
-                  {project.status === 'soon' && (
-                    <div className="absolute top-4 right-4 px-3 py-1 bg-amber-100 text-amber-700 text-xs font-semibold rounded-full">
-                      {t.comingSoon}
-                    </div>
-                  )}
+              {filteredProjects.map(project => {
+                const IconComponent = getProjectIcon(project.icon);
+                return (
+                  <div
+                    key={project.id}
+                    className="group relative bg-white border border-gray-200 rounded-2xl p-7 hover:shadow-2xl hover:border-blue-200 transition-all duration-300 overflow-hidden"
+                  >
+                    {/* Badge de status */}
+                    {project.status === 'soon' && (
+                      <div className="absolute top-4 right-4 px-3 py-1 bg-amber-100 text-amber-700 text-xs font-semibold rounded-full">
+                        {t.comingSoon}
+                      </div>
+                    )}
 
-                  <div className="flex items-start justify-between mb-5">
-                    <div className="w-14 h-14 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-2xl flex items-center justify-center text-white font-bold text-2xl shadow-md group-hover:scale-110 transition-transform">
-                      {project.title.charAt(0)}
+                    <div className="flex items-start justify-between mb-5">
+                      <div className="w-14 h-14 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-2xl flex items-center justify-center text-white shadow-md group-hover:scale-110 transition-transform">
+                        <IconComponent className="w-7 h-7" />
+                      </div>
+                      {project.status === 'active' && (
+                        <ExternalLink className="w-5 h-5 text-gray-400 group-hover:text-blue-600 transition-colors" />
+                      )}
                     </div>
-                    {project.status === 'active' && (
-                      <ExternalLink className="w-5 h-5 text-gray-400 group-hover:text-blue-600 transition-colors" />
+
+                    <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors">
+                      {project.title}
+                    </h3>
+
+                    <div className="flex flex-wrap gap-2 mb-4">
+                      {project.tags.map((tag, idx) => (
+                        <span
+                          key={idx}
+                          className="px-3 py-1 bg-gradient-to-r from-blue-50 to-indigo-50 text-blue-700 text-xs font-medium rounded-full border border-blue-100"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+
+                    {project.status === 'active' && project.link !== '#' && (
+                      <a
+                        href={project.link}
+                        className="inline-flex items-center gap-2 px-4 py-2 bg-blue-600 text-white text-sm font-medium rounded-lg hover:bg-blue-700 transition-all shadow-sm hover:shadow-md"
+                      >
+                        {t.viewProject}
+                        <ArrowRight className="w-4 h-4" />
+                      </a>
                     )}
                   </div>
-
-                  <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors">
-                    {project.title}
-                  </h3>
-
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    {project.tags.map((tag, idx) => (
-                      <span
-                        key={idx}
-                        className="px-3 py-1 bg-gradient-to-r from-blue-50 to-indigo-50 text-blue-700 text-xs font-medium rounded-full border border-blue-100"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-
-                  {project.status === 'active' && project.link !== '#' && (
-                    <a
-                      href={project.link}
-                      className="inline-flex items-center gap-2 px-4 py-2 bg-blue-600 text-white text-sm font-medium rounded-lg hover:bg-blue-700 transition-all shadow-sm hover:shadow-md"
-                    >
-                      {t.viewProject}
-                      <ArrowRight className="w-4 h-4" />
-                    </a>
-                  )}
-                </div>
-              ))}
+                );
+              })}
             </div>
 
             {filteredProjects.length === 0 && (
