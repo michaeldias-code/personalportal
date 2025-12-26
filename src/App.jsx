@@ -79,73 +79,72 @@ export default function App() {
 
   const t = translations[language];
 
-const projects = [
-    { 
-      id: 'ferramentas', 
-      title: language === 'pt' ? 'Ferramentas' : 'Tools', 
-      description: language === 'pt' ? 'CV Builder, Comparador de Arquivos e utilitários.' : 'CV Builder, File Comparator and utilities.',
-      keywords: ['cvbuilder', 'filecompare', 'pdf', 'diff'],
-      link: '/ferramentas/index.html', 
-      icon: 'wrench',
-      status: 'active'
+  // CATEGORIAS DO HUB - Agora o foco é nas categorias, não nos projetos individuais
+  const categoriesHub = [
+    {
+      id: 'ferramentas',
+      title: language === 'pt' ? 'Ferramentas' : 'Tools',
+      icon: Wrench,
+      description: language === 'pt'
+        ? 'Comparador de arquivos para identificar diferenças, conversor universal para múltiplos formatos, e outras utilidades práticas para o dia a dia.'
+        : 'File comparator to identify differences, universal converter for multiple formats, and other practical utilities for daily use.',
+      keywords: ['comparador', 'arquivos', 'conversor', 'universal', 'diff', 'utils', 'ferramentas', 'tools']
     },
-    { 
-      id: 'idiomas', 
-      title: language === 'pt' ? 'Idiomas' : 'Languages', 
-      description: language === 'pt' ? 'Testes de nivelamento e prática de Inglês.' : 'Placement tests and English practice.',
-      keywords: ['english', 'inglês', 'gramática', 'vocabulario'],
-      link: '/idiomas/index.html', 
-      icon: 'globe',
-      status: 'active'
+    {
+      id: 'jogos',
+      title: language === 'pt' ? 'Jogos' : 'Games',
+      icon: Gamepad2,
+      description: language === 'pt'
+        ? 'Xadrez online com inteligência artificial, damas clássicas, campo minado desafiador e sudoku para exercitar a mente.'
+        : 'Online chess with artificial intelligence, classic checkers, challenging minesweeper and sudoku to exercise the mind.',
+      keywords: ['xadrez', 'chess', 'damas', 'checkers', 'campo minado', 'minesweeper', 'sudoku', 'jogos', 'games']
     },
-    { 
-      id: 'jogos', 
-      title: language === 'pt' ? 'Jogos Clássicos' : 'Classic Games', 
-      description: language === 'pt' ? 'Campo Minado, Sudoku, Xadrez, Damas e Jogo da Velha.' : 'Minesweeper, Sudoku, Chess, Checkers and Tic-Tac-Toe.',
-      keywords: ['chess', 'xadrez', 'sudoku', 'damas', 'velha', 'campo minado'],
-      link: '/jogos/index.html', 
-      icon: 'gamepad',
-      status: 'active'
+    {
+      id: 'musica',
+      title: language === 'pt' ? 'Recursos Musicais' : 'Music Resources',
+      icon: Music,
+      description: language === 'pt'
+        ? 'Piano virtual interativo, editor de partituras completo, metrônomo preciso e afinador profissional para músicos de todos os níveis.'
+        : 'Interactive virtual piano, complete score editor, precise metronome and professional tuner for musicians of all levels.',
+      keywords: ['piano', 'virtual', 'partituras', 'editor', 'metrônomo', 'metronome', 'afinador', 'tuner', 'musica', 'music', 'recursos musicais']
     },
-    { 
-      id: 'programacao', 
-      title: language === 'pt' ? 'Programação' : 'Programming', 
-      description: language === 'pt' ? 'E-commerce demo e testes em lógica Python.' : 'E-commerce demo and Python logic tests.',
-      keywords: ['python', 'ecommerce', 'loja', 'coding'],
-      link: '/programacao/index.html', 
-      icon: 'book',
-      status: 'active'
+    {
+      id: 'seguranca',
+      title: language === 'pt' ? 'Segurança' : 'Security',
+      icon: Shield,
+      description: language === 'pt'
+        ? 'Top 10 vulnerabilidades OWASP explicadas, analisador de senhas robusto e ferramentas para conscientização em cibersegurança.'
+        : 'Top 10 OWASP vulnerabilities explained, robust password analyzer and tools for cybersecurity awareness.',
+      keywords: ['owasp', 'vulnerabilidades', 'senhas', 'analisador', 'segurança', 'security', 'password', 'analyzer']
     },
-    { 
-      id: 'musica', 
-      title: language === 'pt' ? 'Recursos Musicais' : 'Music Resources', 
-      description: language === 'pt' ? 'Afinador (Tuner), Editor de Partituras e Piano Virtual.' : 'Tuner, Score Editor and Virtual Piano.',
-      keywords: ['tuner', 'piano', 'partitura', 'afinador', 'metronomo'],
-      link: '/recursosmusicais/index.html', 
-      icon: 'music',
-      status: 'active'
+    {
+      id: 'idiomas',
+      title: language === 'pt' ? 'Idiomas' : 'Languages',
+      icon: Globe,
+      description: language === 'pt'
+        ? 'Teste de nível de inglês personalizado e flashcards interativos para aprendizagem de vocabulário em múltiplos idiomas.'
+        : 'Customized English level test and interactive flashcards for vocabulary learning in multiple languages.',
+      keywords: ['inglês', 'english', 'teste', 'test', 'flashcards', 'vocabulário', 'vocabulary', 'idiomas', 'languages']
     },
-    { 
-      id: 'seguranca', 
-      title: language === 'pt' ? 'Segurança da Informação' : 'Information Security', 
-      description: language === 'pt' ? 'Jogo educativo baseado nas vulnerabilidades OWASP.' : 'Educational game based on OWASP vulnerabilities.',
-      keywords: ['owasp', 'segurança', 'security', 'hacking', 'jogo educativo'],
-      link: '/segurancadainformacao/index.html', 
-      icon: 'shield',
-      status: 'active'
+    {
+      id: 'cursos',
+      title: language === 'pt' ? 'Cursos' : 'Courses',
+      icon: BookOpen,
+      description: language === 'pt'
+        ? 'Plataforma completa de cursos online com acompanhamento de progresso, certificados e conteúdo educacional diversificado.'
+        : 'Complete online course platform with progress tracking, certificates and diverse educational content.',
+      keywords: ['cursos', 'courses', 'plataforma', 'platform', 'educação', 'education', 'online']
+    },
+    {
+      id: 'dados',
+      title: language === 'pt' ? 'Ciência de Dados' : 'Data Science',
+      icon: BarChart3,
+      description: language === 'pt'
+        ? 'Web scraper inteligente, visualizador de dados interativo e ferramentas para análise e processamento de dados.'
+        : 'Intelligent web scraper, interactive data visualizer and tools for data analysis and processing.',
+      keywords: ['dados', 'data', 'scraper', 'visualizador', 'visualizer', 'ciência', 'science', 'análise', 'analysis']
     }
   ];
-  const categories = [
-    { id: 'todos', name: language === 'pt' ? 'Todos' : 'All', emoji: '📚', count: projects.length },
-    { id: 'ferramentas', name: language === 'pt' ? 'Ferramentas' : 'Tools', emoji: '🔧', count: projects.filter(p => p.category === 'ferramentas').length },
-    { id: 'jogos', name: language === 'pt' ? 'Jogos' : 'Games', emoji: '🎮', count: projects.filter(p => p.category === 'jogos').length },
-    { id: 'musica', name: language === 'pt' ? 'Recursos Musicais' : 'Music Resources', emoji: '🎵', count: projects.filter(p => p.category === 'musica').length },
-    { id: 'seguranca', name: language === 'pt' ? 'Segurança da Informação' : 'Information Security', emoji: '🔒', count: projects.filter(p => p.category === 'seguranca').length },
-    { id: 'idiomas', name: language === 'pt' ? 'Idiomas' : 'Languages', emoji: '🌍', count: projects.filter(p => p.category === 'idiomas').length },
-    { id: 'cursos', name: language === 'pt' ? 'Cursos' : 'Courses', emoji: '📖', count: projects.filter(p => p.category === 'cursos').length },
-    { id: 'dados', name: language === 'pt' ? 'Ciência de Dados' : 'Data Science', emoji: '📊', count: projects.filter(p => p.category === 'dados').length },
-  ];
-
   const getProjectIcon = (iconName) => {
     const icons = {
       wrench: Wrench,
@@ -159,16 +158,17 @@ const projects = [
     return icons[iconName] || Wrench;
   };
 
-  const filteredProjects = projects.filter(project => {
-    const searchLower = searchTerm.toLowerCase();
-    const matchesSearch = 
-      project.title.toLowerCase().includes(searchLower) ||
-      project.description.toLowerCase().includes(searchLower) ||
-      project.keywords.some(key => key.toLowerCase().includes(searchLower));
-    
-    return matchesSearch;
+// 1. Filtragem das Categorias do Hub (Agora filtra pelas categorias, não pelos projetos individuais)
+  const filteredCategories = categoriesHub.filter(category => {
+    const matchesSearch = category.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                         category.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                         category.keywords.some(keyword => keyword.toLowerCase().includes(searchTerm.toLowerCase()));
+
+    const matchesCategory = selectedCategory === 'todos' || category.id === selectedCategory;
+
+    return matchesSearch && matchesCategory;
   });
-  
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-white via-blue-50/30 to-white">
       {/* Navbar elegante */}
@@ -332,80 +332,74 @@ const projects = [
                 />
               </div>
 
-              {/* Categorias */}
-              <div className="flex flex-wrap gap-3 justify-center">
-                {categories.map(cat => (
+            {/* Categorias */}
+            <div className="flex flex-wrap gap-3 justify-center">
+              <button
+                onClick={() => setSelectedCategory('todos')}
+                className={`px-5 py-2.5 rounded-xl font-medium transition-all shadow-sm ${
+                  selectedCategory === 'todos'
+                    ? 'bg-gradient-to-r from-blue-600 to-indigo-600 text-white scale-105'
+                    : 'bg-white text-gray-700 hover:bg-gray-50 border border-gray-200'
+                }`}
+              >
+                {t.all}
+              </button>
+              {categoriesHub.map(cat => {
+                const Icon = cat.icon;
+                return (
                   <button
                     key={cat.id}
                     onClick={() => setSelectedCategory(cat.id)}
-                    className={`flex items-center gap-2 px-5 py-2.5 rounded-xl font-medium transition-all shadow-sm hover:shadow-md ${
+                    className={`flex items-center gap-2 px-5 py-2.5 rounded-xl font-medium transition-all shadow-sm ${
                       selectedCategory === cat.id
                         ? 'bg-gradient-to-r from-blue-600 to-indigo-600 text-white scale-105'
                         : 'bg-white text-gray-700 hover:bg-gray-50 border border-gray-200'
                     }`}
                   >
-                    <span className="text-lg">{cat.emoji}</span>
-                    <span>{cat.name}</span>
-                    <span className={`text-xs px-2 py-0.5 rounded-full ${
-                      selectedCategory === cat.id ? 'bg-white/20' : 'bg-gray-100'
-                    }`}>
-                      {cat.count}
-                    </span>
+                    <Icon className="w-4 h-4" />
+                    <span>{cat.title}</span>
                   </button>
-                ))}
-              </div>
+                );
+              })}
+            </div>
             </div>
           </section>
 
-          {/* Grid de projetos */}
+          {/* Grid de Categorias do Hub */}
           <section className="max-w-7xl mx-auto px-6 py-20">
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {filteredProjects.map(project => {
-                const IconComponent = getProjectIcon(project.icon);
+              {filteredCategories.map(category => {
+                const IconComponent = category.icon;
                 return (
                   <div
-                    key={project.id}
-                    className="group relative bg-white border border-gray-200 rounded-2xl p-7 hover:shadow-2xl hover:border-blue-200 transition-all duration-300 overflow-hidden"
+                    key={category.id}
+                    className="group relative bg-white border border-gray-200 rounded-2xl p-7 hover:shadow-2xl hover:border-blue-200 transition-all duration-300 overflow-hidden cursor-pointer"
                   >
-                    {/* Badge de status */}
-                    {project.status === 'soon' && (
-                      <div className="absolute top-4 right-4 px-3 py-1 bg-amber-100 text-amber-700 text-xs font-semibold rounded-full">
-                        {t.comingSoon}
-                      </div>
-                    )}
-
                     <div className="flex items-start justify-between mb-5">
                       <div className="w-14 h-14 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-2xl flex items-center justify-center text-white shadow-md group-hover:scale-110 transition-transform">
                         <IconComponent className="w-7 h-7" />
                       </div>
-                      {project.status === 'active' && (
-                        <ExternalLink className="w-5 h-5 text-gray-400 group-hover:text-blue-600 transition-colors" />
-                      )}
+                      <ArrowRight className="w-5 h-5 text-gray-400 group-hover:text-blue-600 transition-colors" />
                     </div>
 
-                    <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors">
-						{project.title}
-					</h3>
+                    <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors">
+                      {category.title}
+                    </h3>
 
-					<p className="text-sm text-gray-600 mb-4 line-clamp-2">
-					{project.description}
-					</p>
-					
-					{/* Removi as tags antigas e mantive o link para a categoria */}
-					<a
-					href={project.link}
-					className="inline-flex items-center gap-2 px-4 py-2 bg-blue-600 text-white text-sm font-medium rounded-lg hover:bg-blue-700 transition-all"
-					>
-					{t.viewProject}
-					<ArrowRight className="w-4 h-4" />
-					</a>
-                    )}
+                    <p className="text-gray-600 mb-6 leading-relaxed">
+                      {category.description}
+                    </p>
+
+                    <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-600 text-white text-sm font-medium rounded-lg hover:bg-blue-700 transition-all shadow-sm hover:shadow-md">
+                      {language === 'pt' ? 'Explorar categoria' : 'Explore category'}
+                      <ArrowRight className="w-4 h-4" />
+                    </div>
                   </div>
                 );
               })}
             </div>
 
-            {filteredProjects.length === 0 && (
+            {filteredCategories.length === 0 && (
               <div className="text-center py-20">
                 <div className="w-24 h-24 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
                   <Search className="w-12 h-12 text-gray-400" />
@@ -468,12 +462,13 @@ const projects = [
 
             <p className="text-gray-600 mb-8">{t.contactSubtitle}</p>
 
-            <form 
-              action="https://formsubmit.co/michaelrpdias@gmail.com" 
+            <form
+              action="https://formsubmit.co/michaelrpdias@gmail.com"
               method="POST"
               onSubmit={() => setIsSubmitting(true)}
               className="space-y-6"
             >
+              <input type="hidden" name="_next" value="https://michaeldias.vercel.app" />
               {/* Configurações do FormSubmit */}
               <input type="hidden" name="_captcha" value="false" />
               <input type="hidden" name="_template" value="table" />
@@ -562,3 +557,4 @@ const projects = [
     </div>
   );
 }
+
