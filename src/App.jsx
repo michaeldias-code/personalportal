@@ -119,7 +119,7 @@ export default function App() {
         ? 'Top 10 vulnerabilidades OWASP explicadas e ferramentas para conscientização em cibersegurança.'
         : 'Top 10 OWASP vulnerabilities explained and tools for cybersecurity awareness.',
       keywords: ['owasp', 'vulnerabilidades', 'segurança', 'security', 'cybersecurity', 'cibersegurança'],
-      link: 'https://websecurity.vercel.app'
+      link: 'https://itsecurity.vercel.app'
     },
     {
       id: 'idiomas',
@@ -556,4 +556,5 @@ export default function App() {
     </div>
   );
 }
+
 
