@@ -174,7 +174,7 @@ export default function App() {
         <div className="max-w-7xl mx-auto px-6 py-4">
           <div className="flex justify-between items-center">
             {/* Links de navegação */}
-            <div className="hidden md:flex items-center gap-8">
+            <div className="flex items-center gap-4 md:gap-8">
               <button 
                 onClick={() => setCurrentPage('home')}
                 className={`transition-colors font-medium ${
@@ -556,5 +556,6 @@ export default function App() {
     </div>
   );
 }
+
 
 
